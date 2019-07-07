@@ -1,0 +1,12 @@
+<div class="news">
+  <img src="../assets/images/{{news.id}}.svg" alt="{{news.name}}">
+  <h2>{{news.name}}</h2>
+  <p>{{news.description}}</p>
+  <button
+    class="snipcart-add-item"
+    [attr.data-item-id]="news.id"
+    [attr.data-item-name]="news.name"
+    [attr.data-item-description]="news.description">
+    See More
+  </button>
+</div>

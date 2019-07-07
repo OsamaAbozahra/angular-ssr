@@ -1,0 +1,6 @@
+<h2>News</h2>
+<ul>
+  <li *ngFor="let news of newsList">
+    <a routerLink="/news/{{news.id}}">{{news.name}}</a>
+  </li>
+</ul>
