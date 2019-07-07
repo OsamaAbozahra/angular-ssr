@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
 
 import {News} from '../services/mocked-news';
 import {NewsModel} from '../models/news';
@@ -15,7 +14,7 @@ export class NewsComponent implements OnInit {
   newsList = News;
   news: NewsModel;
 
-  constructor(private route: ActivatedRoute, private location: Location) {
+  constructor(private route: ActivatedRoute) {
     const id = +this.route.snapshot.paramMap.get('id');
     this.news = this.findProductById(id);
   }
