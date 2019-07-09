@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {News} from '../services/mocked-news';
-import {HttpClient} from '@angular/common/http';
+import {NewsService} from '../services/news.service';
 
 @Component({
   selector: 'app-news-list',
@@ -10,21 +9,17 @@ import {HttpClient} from '@angular/common/http';
 export class NewsListComponent implements OnInit {
 
 
-  newsList;
-  apiUrl = 'https://newsapi.org/v2/everything?q=bitcoin&from=2019-06-07&sortBy=publishedAt&apiKey=283db18341c04ec18f94fa6dee296f6d';
+  idsList;
 
-  constructor(private http: HttpClient) {
+  constructor(private newsService: NewsService) {
   }
 
   ngOnInit() {
-    this.getNews()
+    this.newsService.getNews()
       .subscribe((data: any) => {
-        this.newsList = data.articles;
+        this.idsList = data;
       });
   }
 
-  getNews() {
-    return this.http.get(this.apiUrl);
-  }
 
 }

@@ -1,12 +1,8 @@
 <h2>News</h2>
 <ul>
-  <li *ngFor="let news of newsList" class="news-list">
+  <li *ngFor="let id of idsList" class="news-list">
     <div>
-      <p>{{news.author}}</p>
-      <p>{{news.content}}</p>
-      <p>{{news.publishedAt}}</p>
-      <img src="{{news.urlToImage}}" alt="{{news.description}}">
-      <a routerLink="/news/">See More</a>
+      <a routerLink="/news/{{id}}">{{id}}</a>
     </div>
   </li>
 </ul>

@@ -1,28 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {NewsService} from '../services/news.service';
 
-import {News} from '../services/mocked-news';
-import {NewsModel} from '../models/news';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
 
-  newsList = News;
-  news: NewsModel;
+  id: any;
+  news: any;
 
-  constructor(private route: ActivatedRoute) {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.news = this.findProductById(id);
+  constructor(private route: ActivatedRoute, private newsService: NewsService) {
+    this.id = +this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-  }
-
-  findProductById(newsId: number): NewsModel {
-    return this.newsList.find(news => news.id === newsId);
+    this.newsService.getNewsById(this.id).subscribe((data) => {
+      this.news = data;
+    });
   }
 }
